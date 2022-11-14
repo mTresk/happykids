@@ -11,7 +11,7 @@ class ContactFormRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,12 +21,22 @@ class ContactFormRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'name' => 'required',
-            'phone' => 'required',
-            'age' => 'required'
+            'name' => ['required', 'string', 'max:55'],
+            'phone' => ['required', 'string'],
+            'age' => ['required', 'numeric', 'max:18']
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Введите имя',
+            'phone.required' => 'Введите телефон',
+            'age.required' => 'Введите возраст',
+            'age.max' => 'Введите корректный возраст',
         ];
     }
 }

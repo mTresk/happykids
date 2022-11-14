@@ -8,7 +8,7 @@ class SectionController extends Controller
 {
     public function index(Section $section)
     {
-        $section = $section->first();
+        $section = $section->firstOrFail();
 
         return view('sections', compact('section'));
     }

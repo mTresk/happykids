@@ -11,7 +11,7 @@ class PaymentFormRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,12 +21,22 @@ class PaymentFormRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'amount' => 'required',
-            'name' => 'required',
-            'phone' => 'required'
+            'amount' => ['required', 'numeric', 'max:100000'],
+            'name' => ['required', 'string', 'max:55'],
+            'phone' => ['required', 'string'],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'amount.required' => 'Введите сумму',
+            'amount.max' => 'Введите корректную сумму',
+            'name.required' => 'Введите имя',
+            'phone.required' => 'Введите телефон',
         ];
     }
 }

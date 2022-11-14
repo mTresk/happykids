@@ -29,4 +29,5 @@
 
     <!-- Scripts -->
     @vite('resources/js/app.js')
+    @routes
 </head>

@@ -44,10 +44,14 @@
                               fill="#B85E65"/>
                     </svg>
 
-                    <a href="{{ $email }}" class="contacts__data">{{ $email }}</a>
+                    <a href="mailto:{{ $email }}" class="contacts__data">{{ $email }}</a>
                 </div>
             </div>
-            <div data-watch data-watch-once class="contacts__map _fade-down" id="map"></div>
+            <div data-watch data-watch-once class="contacts__map _fade-down" id="map">
+                <picture>
+                    <source srcset="{{ asset('img/map.webp') }}" type="image/webp">
+                    <img class="contacts__background" src="{{ asset('img/map.png') }}" alt="Карта"></picture>
+            </div>
         </div>
     </div>
 </section>
